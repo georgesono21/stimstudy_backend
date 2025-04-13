@@ -45,4 +45,3 @@ def refineStudyPlanPrompt(studyPlan, refinement):
 
     """
     return res
-
