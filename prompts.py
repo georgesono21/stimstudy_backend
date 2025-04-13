@@ -41,7 +41,8 @@ def refineStudyPlanPrompt(studyPlan, refinement):
     4. The total number of video outlines in the study plan must not exceed 6 UNLESS THE USER REQUESTS FOR ANOTHER VIDEO.
     5. Do not include any extra commentary or information outside of the JSON output.
 
-    Output only the updated study plan in strictly valid JSON.
+    Output only the updated study plan in strictly valid JSON. It must be an array of JSON objects, each representing one video outline. Ensure that the output is strictly valid JSON and does not include any additional commentary or content outside of this JSON array.
 
     """
     return res
+
