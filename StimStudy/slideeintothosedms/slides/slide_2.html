@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythagorean Theorem Explained</title>
+    <style>
+        /* Basic styles */
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            background-color: #e0f7fa; /* Light Cyan background */
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            position: relative; /* Needed for absolute positioning */
+            overflow: hidden; /* Hide elements animating from outside */
+        }
+
+        /* Triangle container */
+        .triangle-container {
+            position: relative;
+            width: 250px; /* Width of the base 'b' */
+            height: 187.5px; /* Height 'a' (e.g., 3/4 of width) */
+            opacity: 0; /* Start hidden */
+            animation: fadeInContainer 1s ease-out 0.5s forwards;
+            margin-bottom: 80px; /* Space below triangle before equation */
+        }
+
+        /* The triangle shape using borders */
+        .triangle {
+            width: 0;
+            height: 0;
+            /* border-bottom creates side 'a' (height) */
+            border-bottom: 187.5px solid #ff6347; /* Tomato color */
+            /* border-right (transparent) determines width of base 'b' and creates hypotenuse */
+            border-right: 250px solid transparent;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        /* Visual line for side 'b' (base) for clarity */
+        .triangle::before {
+            content: '';
+            position: absolute;
+            bottom: -5px; /* Position slightly below */
+            left: 0;
+            width: 250px; /* Match border-right */
+            height: 5px;
+            background-color: #4682b4; /* Steel Blue */
+        }
+         /* Visual line for side 'a' (height) for clarity */
+        .triangle::after {
+             content: '';
+            position: absolute;
+            bottom: 0;
+            left: -5px; /* Position slightly left */
+            width: 5px;
+            height: 187.5px; /* Match border-bottom */
+            background-color: #ff6347; /* Match border-bottom */
+        }
+
+        /* Labels */
+        .label {
+            position: absolute;
+            font-size: 1.9em;
+            font-weight: bold;
+            font-style: italic;
+            opacity: 0; /* Start hidden */
+            transform-origin: center; /* For any potential scale/rotate animations */
+        }
+        .label-a { /* Side 'a' (height) */
+            left: -35px; /* Position left of the vertical side */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff6347; /* Match side 'a' color */
+            animation: fadeInLabel 0.8s ease-out 1.5s forwards;
+        }
+        .label-b { /* Side 'b' (base) */
+            bottom: -45px; /* Position below the base */
+            left: 50%;
+            transform: translateX(-50%);
+            color: #4682b4; /* Match side 'b' color */
+            animation: fadeInLabel 0.8s ease-out 2.0s forwards;
+        }
+        .label-c { /* Hypotenuse 'c' */
+            top: 45%; /* Position near the middle of the hypotenuse */
+            left: 55%;
+            /* Approx angle based on 187.5/250 ratio (atan(187.5/250) approx 37 deg) */
+            transform: translate(-50%, -50%) rotate(-37deg);
+            color: #333; /* Default dark color */
+            animation: fadeInLabel 0.8s ease-out 2.5s forwards;
+        }
+
+        /* Equation */
+        .equation {
+            font-size: 3.5em; /* Make it prominent */
+            font-weight: bold;
+            opacity: 0; /* Start hidden */
+            animation: zoomInEquation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 3.2s forwards; /* Zoom in with bounce */
+            position: absolute;
+            bottom: 10%; /* Position lower on the slide */
+            text-align: center;
+            width: 100%;
+            color: #333; /* Default color */
+        }
+        .equation .term-a { color: #ff6347; } /* Match side 'a' color */
+        .equation .term-b { color: #4682b4; } /* Match side 'b' color */
+        .equation .term-c { color: #000; } /* Make C stand out slightly more */
+        .equation sup {
+             font-size: 0.6em;
+             vertical-align: super;
+             margin-left: 1px; /* Small spacing */
+        }
+
+        /* Keyframes */
+        @keyframes fadeInContainer {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInLabel {
+             from { opacity: 0; transform: scale(0.5) translateY(10px); } /* Add slight transform */
+             to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        /* Re-apply base transforms needed for label positioning after animation */
+        .label-a { animation-name: fadeInLabel; transform: translateY(-50%); }
+        .label-b { animation-name: fadeInLabel; transform: translateX(-50%); }
+        .label-c { animation-name: fadeInLabel; transform: translate(-50%, -50%) rotate(-37deg); }
+
+
+        @keyframes zoomInEquation {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Script to be read aloud:
+    <script>A squared plus B squared equals C squared. A and B are the sides, C is the hypotenuse, the longest side. Remember that, bestie!</script>
+    -->
+    <div class="slide">
+        <div class="triangle-container">
+            <div class="triangle"></div>
+            <span class="label label-a">a</span>
+            <span class="label label-b">b</span>
+            <span class="label label-c">c</span>
+        </div>
+        <div class="equation">
+            <span class="term-a">a<sup>2</sup></span> + <span class="term-b">b<sup>2</sup></span> = <span class="term-c">c<sup>2</sup></span>
+        </div>
+    </div>
+</body>
+</html>

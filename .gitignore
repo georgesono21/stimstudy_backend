@@ -1,2 +1,8 @@
 .env
 __pycache__/
+ASSETS/
+output
+videos
+backgroundVideos/
+.DS_Store
+demo/

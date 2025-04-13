@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 2: Find Your Vibe</title>
+    <style>
+        /* Basic styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fffde7; /* Light yellow background for this slide */
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* Rounded, friendly font */
+            overflow: hidden;
+        }
+
+        .slide-container {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            padding: 20px;
+            max-width: 90%;
+        }
+
+        h2 {
+            font-size: calc(2em + 2vmin); /* Responsive font size */
+            color: #ff8f00; /* Amber color */
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: slideDownFadeIn 1s ease-out 0.5s forwards;
+            transform: translateY(-20px);
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(20px, 5vw, 50px); /* Responsive gap */
+            margin-top: 30px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .icon {
+            font-size: calc(4em + 4vmin); /* Responsive icon size */
+            opacity: 0;
+            transform: scale(0.5);
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* Bouncy pop */
+        }
+
+        /* Staggered animation delays for icons */
+        .icon-1 {
+            animation-delay: 0.8s;
+        }
+        .icon-2 {
+            animation-delay: 1.0s;
+        }
+        .icon-3 {
+            animation-delay: 1.2s;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDownFadeIn {
+             from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h2>Step 2: Find Your Vibe</h2>
+        <div class="icons-container">
+            <div class="icon icon-1">⚽</div> <!-- Sports -->
+            <div class="icon icon-2">🎨</div> <!-- Art -->
+            <div class="icon icon-3">🎮</div> <!-- Gaming -->
+        </div>
+    </div>
+
+    <!-- Presenter Script (as requested in a script tag) -->
+    <script>
+        // Next up: Find your tribe! Join clubs, hit up events, slide into those DMs (respectfully, ofc). Common interests are the ultimate friendship cheat code. If you both like the same tiktokers you're basically married.
+    </script>
+
+</body>
+</html>
