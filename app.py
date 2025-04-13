@@ -5,7 +5,6 @@ from flask import Flask, jsonify, send_file, request
 import google.generativeai as genai
 from dotenv import load_dotenv
 import prompts
-# import video
 from flask_cors import CORS
 import chat
 
