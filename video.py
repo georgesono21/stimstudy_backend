@@ -20,6 +20,7 @@ def generate_and_combine_videos(
     slide_folder,
     final_output_path,
     index,
+    title,
 ):
     # Resolve background video
     background_video_path = os.path.join(
@@ -30,13 +31,12 @@ def generate_and_combine_videos(
         raise FileNotFoundError(
             f"Background video '{background_video_path}' not found."
         )
-    
 
     # Resolve character sprite directory and image
     character_dir = os.path.join(sprite_dir, selected_character)
     if not os.path.isdir(character_dir):
         raise FileNotFoundError(f"Character directory '{character_dir}' not found.")
-    
+
     def get_character_image(character_dir, lastUsed):
         image_files = [
             file
@@ -47,14 +47,14 @@ def generate_and_combine_videos(
             raise FileNotFoundError(
                 f"No image found in character directory '{character_dir}'."
             )
-        
+
         # Filter out the last used sprite
         available_images = [file for file in image_files if file != lastUsed]
         if not available_images:
             raise ValueError(
                 "No available images left after excluding the last used one."
             )
-        
+
         sprite_path = os.path.join(character_dir, random.choice(available_images))
         return sprite_path
 
@@ -74,7 +74,7 @@ def generate_and_combine_videos(
                 0, audio_clip.duration
             )
             output_name = os.path.join(output_folder, f"{audio_name}_video.mp4")
-            
+
             sprite_path = get_character_image(character_dir, lastUsed)
             createCharacterVideo(audio_clip, sprite_path, bg_clip, output_name)
             lastUsed = sprite_path
@@ -129,7 +129,7 @@ def generate_and_combine_videos(
         if final_clips:
             os.makedirs(final_output_path, exist_ok=True)
             final_video_path = os.path.join(
-                final_output_path, "final_combined_video.mp4"
+                final_output_path, f"{index}_{title}.mp4"
             )
             final_video = concatenate_videoclips(final_clips, method="compose")
             final_video.write_videofile(
